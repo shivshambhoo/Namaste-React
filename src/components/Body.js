@@ -12,6 +12,10 @@ const Body = () => {
                 <ResturantCard resData={resObj[1]}/>;
                 <ResturantCard resData={resObj[2]}/>;
                 <ResturantCard resData={resObj[3]}/>; */}
+
+
+
+                
         {/*for loop in   */}
         
         {resObj.map((restaurant) => (
