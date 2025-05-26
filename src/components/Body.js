@@ -5,7 +5,7 @@ const Body = () => {
     <div className="body">
       <div className="search">serach</div>
       <div className="res-container">
-        {/* <ResturantCard resName="Meghna Food" cuisin="Biryani, North 
+        {/* <ResturantCard resName="Meghna Food" cuisin="Biryani, 
                  Indian, Asian "/>
                  <ResturantCard resName="Kfc," cuisin="Burger, Fast Food, indian"/> */}
         {/* <ResturantCard resData={resObj[0]}/>;
