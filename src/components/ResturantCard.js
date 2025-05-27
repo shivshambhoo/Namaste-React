@@ -2,11 +2,6 @@ import {CDN_URL} from "../utils/constant";
 const ResturantCard = (props) => {
   // object disturcturing=
   const { resData } = props;
-
-  // also write like this const ResturantCard=({resName, cuisin})
-
-  // console.log(props)   // props is object
-  // optimize using distructuring
   const {
     cloudinaryImageId,
     name,
