@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 
 const Body = () => {
   const [resData, setResData] = useState([]);
+  const [filterResturant, setFilterResturant] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -17,29 +19,55 @@ const Body = () => {
     setResData(
       json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
+    setFilterResturant(
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
-  if(resData.length === 0) {
-    return <Shimmer />
-  }
+  // its also call conditional randring
+  //   if (resData.length === 0) {
+  //     return <Shimmer />;
+  //   }
 
-  return (
+  return resData.length == 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            className="search-box"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          ></input>
+          <button
+            onClick={() => {
+              const filterData = resData.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilterResturant(filterData);
+            }}
+          >
+            search
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {
             const filterData = resData.filter(
               (res) => res.info.avgRating >= 4.3
             );
-            setResData(filterData);
+            setFilterResturant(filterData);
           }}
         >
           Top Rated Restaurant
         </button>
       </div>
       <div className="res-container">
-        {resData.map((restaurant) => (
+        {filterResturant.map((restaurant) => (
           <ResturantCard key={restaurant?.info?.id} resData={restaurant} />
         ))}
       </div>
